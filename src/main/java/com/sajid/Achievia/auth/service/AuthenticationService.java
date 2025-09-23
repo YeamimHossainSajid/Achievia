@@ -1,9 +1,9 @@
 package com.sajid.Achievia.auth.service;
 
-import com.example.Matches.auth.CustomUserDetails;
-import com.example.Matches.auth.dto.request.LoginRequestDTO;
-import com.example.Matches.auth.dto.response.LoginResponseDTO;
-import com.example.Matches.config.security.jwt.JWTService;
+import com.sajid.Achievia.auth.CustomUserDetails;
+import com.sajid.Achievia.auth.dto.request.LoginRequestDTO;
+import com.sajid.Achievia.auth.dto.response.LoginResponseDTO;
+import com.sajid.Achievia.config.security.jwt.JWTService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

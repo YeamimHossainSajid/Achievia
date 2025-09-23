@@ -1,5 +1,5 @@
 package com.sajid.Achievia.config.chat.chatting;
-import com.example.Matches.config.chat.chatroom.ChatRoomService;
+import com.sajid.Achievia.config.chat.chatroom.ChatRoomService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

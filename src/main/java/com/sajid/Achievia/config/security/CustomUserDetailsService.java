@@ -1,8 +1,8 @@
 package com.sajid.Achievia.config.security;
 
-import com.example.Matches.auth.CustomUserDetails;
-import com.example.Matches.auth.model.User;
-import com.example.Matches.auth.repository.UserRepo;
+import com.sajid.Achievia.auth.CustomUserDetails;
+import com.sajid.Achievia.auth.model.User;
+import com.sajid.Achievia.auth.repository.UserRepo;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

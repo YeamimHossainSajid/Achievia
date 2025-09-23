@@ -1,7 +1,6 @@
 package com.sajid.Achievia.config.security.jwt;
 
-
-import com.example.Matches.config.security.CustomUserDetailsService;
+import com.sajid.Achievia.config.security.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

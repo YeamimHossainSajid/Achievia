@@ -1,6 +1,6 @@
 package com.sajid.Achievia.config.security;
 
-import com.example.Matches.config.security.jwt.JWTFilter;
+import com.sajid.Achievia.config.security.jwt.JWTFilter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

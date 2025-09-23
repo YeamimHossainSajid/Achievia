@@ -68,6 +68,11 @@ public class UserServiceIMPL implements UserService {
     }
 
 
+    @Override
+    public String create(UserRequestDTO requestDto) {
+        return "";
+    }
+
     public CustomUserResponseDTO readOne(Long id ) {
         CustomUserResponseDTO singleUserById = userRepository.findUserByUserId(id);
         if ( Objects.isNull( singleUserById ) ) {
@@ -92,6 +97,11 @@ public class UserServiceIMPL implements UserService {
 
     }
 
+    @Override
+    public void updateUser(Long id, UserRequestDTO userRequestDTO) {
+
+    }
+
 
 //    @Override
 //    public void updateUser(Long id, UserUpdateRequestDto userRequestDTO, MultipartFile heroImageFile) throws IOException {
@@ -107,6 +117,11 @@ public class UserServiceIMPL implements UserService {
     @Override
     public CustomUserResponseDTO searchByUsername(String username) {
         return userRepository.searchByUsername( username );
+    }
+
+    @Override
+    public String validateOtp(String email, String otp) {
+        return "";
     }
 //
 //    public User ConvertToEntityUpdate(User user,UserUpdateRequestDto userRequestDTO,MultipartFile profilepic) throws IOException {
