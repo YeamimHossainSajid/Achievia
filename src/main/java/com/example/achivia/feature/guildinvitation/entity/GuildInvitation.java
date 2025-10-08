@@ -20,6 +20,7 @@ public class GuildInvitation {
     @GeneratedValue
     private UUID id;
 
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "guild_id", nullable = false)
     private Guild guild;
