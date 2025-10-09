@@ -3,6 +3,7 @@ package com.example.achivia.feature.achievement.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -14,8 +15,14 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class Achievement {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(updatable = false, nullable = false)
     private UUID id;
 
     @Column(unique = true, nullable = false)
