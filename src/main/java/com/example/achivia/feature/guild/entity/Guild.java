@@ -4,6 +4,7 @@ import com.example.achivia.feature.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
@@ -16,8 +17,14 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class Guild {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
+    @Column(updatable = false, nullable = false)
     private UUID id;
 
     @Column(unique = true, nullable = false)

@@ -4,6 +4,7 @@ import com.example.achivia.feature.problem.entity.Problem;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -16,7 +17,11 @@ import java.util.UUID;
 @Builder
 public class ProblemTest {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
     private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
