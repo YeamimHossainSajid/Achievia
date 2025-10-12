@@ -1,20 +1,22 @@
-package com.example.achivia.feature.user.entity;
-
+package com.example.achivia.auth.model;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.UUID;
 
-@Entity
-@Table(name = "users")
-@Data
-@NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@NoArgsConstructor
+@Getter
+@Setter
+@Entity
+@Table(name = "_user")
 public class User {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -22,16 +24,30 @@ public class User {
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
+    @Column(updatable = false, nullable = false)
     private UUID id;
 
-    @Column(unique = true, nullable = false)
-    private String email;
-
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(name = "password_hash")
-    private String passwordHash;
+    @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    @NotEmpty
+    private String password;
+
+    @ManyToMany(
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH},
+            fetch = FetchType.EAGER
+    )
+    @JoinTable(
+            name = "_user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "roles_id")
+    )
+    private Set<Role> roles = new LinkedHashSet<>();
+
 
     @Column(name = "auth_provider")
     private String authProvider;
@@ -42,10 +58,6 @@ public class User {
     @Column(name = "email_verified_at")
     private LocalDateTime emailVerifiedAt;
 
-    @Column(nullable = false)
-    @Builder.Default
-    private String role = "user";
-
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -53,4 +65,6 @@ public class User {
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
+
 }
+

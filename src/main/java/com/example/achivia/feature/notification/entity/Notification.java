@@ -1,6 +1,6 @@
 package com.example.achivia.feature.notification.entity;
 
-import com.example.achivia.feature.user.entity.User;
+import com.example.achivia.auth.model.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

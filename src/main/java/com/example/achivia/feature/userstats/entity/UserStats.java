@@ -1,11 +1,8 @@
 package com.example.achivia.feature.userstats.entity;
 
-
-import com.example.achivia.feature.user.entity.User;
+import com.example.achivia.auth.model.User;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

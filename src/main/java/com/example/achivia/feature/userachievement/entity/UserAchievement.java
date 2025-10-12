@@ -1,8 +1,8 @@
 package com.example.achivia.feature.userachievement.entity;
 
 
+import com.example.achivia.auth.model.User;
 import com.example.achivia.feature.achievement.entity.Achievement;
-import com.example.achivia.feature.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;

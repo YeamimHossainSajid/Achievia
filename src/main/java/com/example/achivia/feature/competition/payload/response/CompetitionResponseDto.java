@@ -3,11 +3,13 @@ package com.example.achivia.feature.competition.payload.response;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-import lombok.Builder;
-import lombok.Value;
 
-@Value
-@Builder
+import lombok.*;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CompetitionResponseDto {
 
     UUID id;

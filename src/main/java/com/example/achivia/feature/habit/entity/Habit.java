@@ -1,7 +1,7 @@
 package com.example.achivia.feature.habit.entity;
 
+import com.example.achivia.auth.model.User;
 import com.example.achivia.feature.habittemplate.entity.HabitTemplate;
-import com.example.achivia.feature.user.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

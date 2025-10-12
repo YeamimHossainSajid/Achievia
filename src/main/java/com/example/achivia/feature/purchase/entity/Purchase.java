@@ -1,6 +1,6 @@
 package com.example.achivia.feature.purchase.entity;
+import com.example.achivia.auth.model.User;
 import com.example.achivia.feature.shopitem.entity.ShopItem;
-import com.example.achivia.feature.user.entity.User;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
