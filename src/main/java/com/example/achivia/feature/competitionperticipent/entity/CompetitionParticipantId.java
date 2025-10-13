@@ -13,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-class CompetitionParticipantId implements java.io.Serializable {
+public class CompetitionParticipantId implements java.io.Serializable {
     private UUID competitionId;
     private UUID userId;
 }
