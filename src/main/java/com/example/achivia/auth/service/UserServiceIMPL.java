@@ -38,7 +38,6 @@ public class UserServiceIMPL implements UserService {
     @Autowired
     private CloudneryImageService cloudneryImageService;
 
-    @Autowired
     private User tempUser;
 
     public UserServiceIMPL(UserRepo userRepo, PasswordEncoder passwordEncoder, RoleRepo roleRepository) {
