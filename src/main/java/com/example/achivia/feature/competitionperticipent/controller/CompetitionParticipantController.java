@@ -49,5 +49,6 @@ public class CompetitionParticipantController {
             @PathVariable UUID userId) {
         participantService.deleteParticipant(competitionId, userId);
         return ResponseEntity.ok().build();
+
     }
 }
