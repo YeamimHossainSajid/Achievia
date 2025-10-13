@@ -50,5 +50,6 @@ public class CompetitionParticipantController {
         participantService.deleteParticipant(competitionId, userId);
         return ResponseEntity.ok().build();
 
+
     }
 }
