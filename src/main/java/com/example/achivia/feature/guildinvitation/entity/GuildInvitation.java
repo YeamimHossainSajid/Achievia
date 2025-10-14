@@ -4,7 +4,6 @@ import com.example.achivia.auth.model.User;
 import com.example.achivia.feature.guild.entity.Guild;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDateTime;
