@@ -37,13 +37,3 @@ public class GuildMember {
     @Column(name = "joined_at", nullable = false, updatable = false)
     private LocalDateTime joinedAt;
 }
-
-@Embeddable
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-class GuildMemberId implements java.io.Serializable {
-    private UUID guildId;
-    private UUID userId;
-}
