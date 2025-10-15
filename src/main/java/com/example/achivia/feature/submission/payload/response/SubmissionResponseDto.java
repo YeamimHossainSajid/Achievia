@@ -1,0 +1,26 @@
+package com.example.achivia.feature.submission.payload.response;
+
+import lombok.*;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class SubmissionResponseDto {
+    private UUID id;
+    private UUID userId;
+    private UUID problemId;
+    private UUID competitionId;
+    private String language;
+    private String code;
+    private String status;
+    private Integer score;
+    private Integer timeMs;
+    private Integer memoryKb;
+    private String errorMessage;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+}

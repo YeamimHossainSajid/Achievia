@@ -36,12 +36,3 @@ public class UserAchievement {
     private LocalDateTime unlockedAt = LocalDateTime.now();
 }
 
-@Embeddable
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-class UserAchievementId implements java.io.Serializable {
-    private UUID userId;
-    private UUID achievementId;
-}

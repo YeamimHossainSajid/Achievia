@@ -1,4 +1,4 @@
-package com.example.achivia.feature.problemtags.entity;
+package com.example.achivia.feature.userachievement.entity;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ProblemTagId implements java.io.Serializable {
-    private UUID problemId;
-    private UUID tagId;
+public class UserAchievementId implements java.io.Serializable {
+    private UUID userId;
+    private UUID achievementId;
 }
