@@ -309,6 +309,9 @@ public class GamificationEngine {
   <img src="competitionflow.svg" alt="Competition Participation Flow" width="100%" />
 </p>
 
+#### 🧩 Overview
+The **Competition Participation Flow** manages how users join, compete, and track results within the system — ensuring fairness, scalability, and real-time feedback.
+
 ### 🔥 Habit Tracking Flow
 
 <p align="center">
@@ -318,3 +321,13 @@ public class GamificationEngine {
 #### 🧩 Overview
 The **Habit Tracking Flow** monitors user behavior, learning consistency, and progress toward coding or learning goals.  
 It ensures continuous engagement through streaks, reminders, and XP rewards for maintaining daily habits.
+
+## 🏆 Real-time Leaderboard System
+
+<p align="center">
+  <img src="leaderboard.svg" alt="Real-time Leaderboard System" width="100%" />
+</p>
+
+#### 🚀 Overview
+The **Real-time Leaderboard System** dynamically updates competition rankings based on users’ submissions, execution scores, and performance metrics.  
+It ensures instant feedback, motivates participation, and maintains fairness during competitive programming events.
