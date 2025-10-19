@@ -65,7 +65,8 @@ public class GlobalWebSecurityConfig {
                                     "/webjars/**",
                                     "/User",
                                     "/Log",
-                                    "/swagger-ui.html"
+                                    "/swagger-ui.html",
+                                    "/healthcheck"
                             )
                             .permitAll()
                             .anyRequest()
