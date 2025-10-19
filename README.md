@@ -1,4 +1,4 @@
-# Achievia - Competitive Programming & Learning Platform 🏆
+# Achievia - Competitive Programming & Learning Platform 
 
 <div align="center">
 
@@ -7,7 +7,7 @@
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql)](https://www.mysql.com/)  
 [![JWT Auth](https://img.shields.io/badge/JWT-Auth-000000?style=for-the-badge&logo=jsonwebtokens)](https://jwt.io/)  
 
-🚀 Transform Your Coding Skills Through Competition and Community  
+ Transform Your Coding Skills Through Competition and Community  
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
 [![Issues](https://img.shields.io/github/issues/YeamimHossainSajid/Achievia)](https://github.com/YeamimHossainSajid/Achievia/issues)  
@@ -18,7 +18,7 @@
 
 ---
 
-## 📖 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)  
 - [Features](#features)  
@@ -35,7 +35,7 @@
 
 ---
 
-## 🎯 Overview
+## Overview
 
 **Achievia** is a comprehensive competitive programming platform designed to help developers enhance their coding skills through structured competitions, real-time feedback, and community engagement.  
 
@@ -45,7 +45,7 @@ Built with **Spring Boot 3** and **Java 21**, Achievia provides a robust backend
 
 ---
 
-## 💡 The Problem We Solve
+##  The Problem We Solve
 
 | Problem             | Industry Impact                                 | Our Solution                                                   |
 |---------------------|-----------------------------------------------|------------------------------------------------------------------|
@@ -55,22 +55,22 @@ Built with **Spring Boot 3** and **Java 21**, Achievia provides a robust backend
 | No Progress Tracking| Difficulty measuring coding improvement        | AI-Powered Analytics Dashboard with skill metrics               |
 
 
-## ✨ Features
+##  Features
 
-### 🏆 Core Features
+###  Core Features
 - **Real-time Coding Competitions**: Time-bound challenges with live leaderboards  
 - **Multi-language Support**: Java, Python, C++, JavaScript, and more  
 - **Intelligent Problem Management**: Curated problem sets with progressive difficulty  
 - **Performance Analytics**: Execution time, memory usage, and code quality metrics  
 - **User Progression System**: XP, levels, and achievements tracking  
 
-### 🎯 User Experience
+###  User Experience
 - **Personalized Learning Paths**: Adaptive problem recommendations  
 - **Community Engagement**: Code reviews, discussions, and mentorship programs  
 - **Portfolio Building**: Showcase rankings and solved problems  
 - **Mobile Responsive**: Works seamlessly across all devices  
 
-### 🔧 Technical Features
+###  Technical Features
 - **RESTful API**: Clean, well-documented endpoints  
 - **JWT Authentication**: Secure token-based authentication  
 - **Code Execution Sandbox**: Secure code execution using Judge0 API  
@@ -79,11 +79,52 @@ Built with **Spring Boot 3** and **Java 21**, Achievia provides a robust backend
 ---
 
 
-## 🏗️ System Architecture
+##  System Architecture
 
 ### High-Level Architecture
 
 ![High Level Architecture](highlevelarchitecture.svg)
+
+# Database Design & Optimization Excellence
+
+Achievia’s database is meticulously designed for **scalability, integrity, and lightning-fast performance**. The architecture ensures data consistency while remaining future-proof and flexible for evolving requirements.
+
+---
+
+##  Entity Relationship Diagram (ERD)
+<p align="center">
+  <img src="database.svg" alt="Database ERD Diagram" width="100%" />
+</p>
+
+---
+
+##  Database Design Highlights
+
+###  Excellent Normalization Implementation
+- **Third Normal Form (3NF) Mastery**  
+  - Perfect elimination of transitive dependencies.  
+  - Examples:  
+    - `users → user_profiles` (1:1 relationship properly separated)  
+    - `problems → problem_tests` (test cases isolated from problem entity)  
+    - `habits → habit_logs` (templates separated from instances)  
+
+###  Boyce-Codd Normal Form (BCNF) Compliance
+- All determinants are candidate keys.  
+- Key examples:  
+  - `problem_tags` → `(problem_id, tag_id)` as composite primary key  
+  - `competition_participants` → `(competition_id, user_id)`  
+  - `guild_members` → `(guild_id, user_id)`  
+  - `user_achievements` → `(user_id, achievement_id)`  
+
+###  Fourth Normal Form (4NF) Achieved
+- No multi-valued dependencies.  
+- Proper **junction tables** for all many-to-many relationships.  
+- **Atomic column values** maintained throughout.
+
+---
+
+This structure ensures **data integrity, optimal query performance, and seamless scalability**, making it ideal for production-ready applications.
+
 
 # Achievia - Project Architecture
 
@@ -91,8 +132,8 @@ Built with **Spring Boot 3** and **Java 21**, Achievia provides a robust backend
 
 ```
 src/main/java/com/yeamim/achievia/
-├── 📁 feature/                    # Modular Feature Packages
-│   ├── 👤 user/                   # Complete User Module
+├── feature/                    # Modular Feature Packages
+│   ├──  user/                   # Complete User Module
 │   │   ├── controller/            # Handles all API endpoints related to users
 │   │   │   └── UserController.java
 │   │   ├── service/               # Business logic & operations
@@ -106,7 +147,7 @@ src/main/java/com/yeamim/achievia/
 │   │       ├── UserResponse.java
 │   │       └── ProfileUpdateRequest.java
 │   │
-│   ├── 🏆 competition/            # Complete Competition Module
+│   ├── competition/            # Complete Competition Module
 │   │   ├── controller/
 │   │   │   └── CompetitionController.java
 │   │   ├── service/
@@ -120,7 +161,7 @@ src/main/java/com/yeamim/achievia/
 │   │       ├── CompetitionResponse.java
 │   │       └── JoinCompetitionRequest.java
 │   │
-│   ├── 💻 problem/               # Complete Problem Module
+│   ├──  problem/               # Complete Problem Module
 │   │   ├── controller/
 │   │   │   └── ProblemController.java
 │   │   ├── service/
@@ -134,7 +175,7 @@ src/main/java/com/yeamim/achievia/
 │   │       ├── ProblemResponse.java
 │   │       └── TestCaseRequest.java
 │   │
-│   ├── 📤 submission/            # Complete Submission Module
+│   ├──  submission/            # Complete Submission Module
 │   │   ├── controller/
 │   │   │   └── SubmissionController.java
 │   │   ├── service/
@@ -148,7 +189,7 @@ src/main/java/com/yeamim/achievia/
 │   │       ├── SubmissionResponse.java
 │   │       └── CodeExecutionRequest.java
 │   │
-│   └── 💬 chat/                  # Complete Chat Module
+│   └── chat/                  # Complete Chat Module
 │       ├── controller/
 │       │   └── ChatController.java
 │       ├── service/
@@ -162,7 +203,7 @@ src/main/java/com/yeamim/achievia/
 │           ├── ChatMessageResponse.java
 │           └── TypingNotificationRequest.java
 │
-├── 🔐 auth/                      # Complete Auth Module
+├──  auth/                      # Complete Auth Module
 │   ├── controller/
 │   │   └── AuthController.java
 │   ├── service/
@@ -177,7 +218,7 @@ src/main/java/com/yeamim/achievia/
 │       ├── AuthResponse.java
 │       └── TokenRefreshRequest.java
 │
-├── ⚙️ config/                    # External Service Configurations
+├──  config/                    # External Service Configurations
 │   ├── CohereConfig.java
 │   ├── CloudinaryConfig.java
 │   ├── SmtpConfig.java
@@ -194,7 +235,7 @@ src/main/java/com/yeamim/achievia/
 
 ## Module Architecture Benefits
 
-### 🎯 Modular Design Advantages
+###  Modular Design Advantages
 - **Independent Development:** Each module can be developed and tested separately  
 - **Clear Separation:** Business logic isolated in respective modules  
 - **Easy Maintenance:** Changes in one module don't affect others  
@@ -203,7 +244,7 @@ src/main/java/com/yeamim/achievia/
 
 ---
 
-## 📊 Module Responsibilities
+##  Module Responsibilities
 
 | Module        | Controller          | Service            | Repository       | Entity           | Payload                  |
 |---------------|------------------|-----------------|----------------|----------------|-------------------------|
@@ -216,7 +257,7 @@ src/main/java/com/yeamim/achievia/
 
 ---
 
-## 🔄 External Services Integration Flow
+##  External Services Integration Flow
 
 ![External Service](externalservice.svg)
 
@@ -226,20 +267,20 @@ This highly modular architecture ensures each feature is self-contained with its
 
 This makes your codebase **extremely maintainable, testable, and scalable**. 🚀
 
-# 🎮 Gamification & Habit Engine
+#  Gamification & Habit Engine
 
 > Powering developer motivation through progress tracking, XP, and achievements.
 
 ---
 
-## 💡 Overview
+##  Overview
 
 The **Gamification & Habit Engine** transforms learning into a continuous growth journey.  
 It dynamically tracks user habits, calculates progress, awards XP, and unlocks achievements — ensuring sustained engagement and measurable skill improvement.
 
 ---
 
-## ⚙️ Habit Tracking Engine
+## Habit Tracking Engine
 
 <p align="center">
   <img src="habitengine.svg" alt="Habit Engine" width="100%" />
@@ -261,7 +302,7 @@ public class HabitEngine {
 }
 ```
 
-## 🏅 Achievement & XP System
+##  Achievement & XP System
 
 ![Xp and Level](xpandlevel.svg)
 
@@ -292,42 +333,42 @@ public class GamificationEngine {
     }
 }
 ```
-### ⚡ XP & Level Progression
+###  XP & Level Progression
 
 | Level Range | XP / Level | Notes |
 |--------------|-------------|--------|
-| **1 - 10** | 1000 | 🎯 Beginner Tier |
-| **11 - 50** | 2500 | ⚙️ Intermediate Tier |
-| **51+** | 5000 | 🚀 Advanced Tier |
-| **Max Level: 100** | — | 💎 Elite Coder Status |
+| **1 - 10** | 1000 |  Beginner Tier |
+| **11 - 50** | 2500 |  Intermediate Tier |
+| **51+** | 5000 |  Advanced Tier |
+| **Max Level: 100** | — |  Elite Coder Status |
 
-## 🔁 Key Business Logic Flows
+##  Key Business Logic Flows
 
-### 🏆 Competition Participation Flow
+###  Competition Participation Flow
 
 <p align="center">
   <img src="competitionflow.svg" alt="Competition Participation Flow" width="100%" />
 </p>
 
-#### 🧩 Overview
+####  Overview
 The **Competition Participation Flow** manages how users join, compete, and track results within the system — ensuring fairness, scalability, and real-time feedback.
 
-### 🔥 Habit Tracking Flow
+###  Habit Tracking Flow
 
 <p align="center">
   <img src="habitflow.svg" alt="Habit Tracking Flow" width="100%" />
 </p>
 
-#### 🧩 Overview
+####  Overview
 The **Habit Tracking Flow** monitors user behavior, learning consistency, and progress toward coding or learning goals.  
 It ensures continuous engagement through streaks, reminders, and XP rewards for maintaining daily habits.
 
-## 🏆 Real-time Leaderboard System
+##  Real-time Leaderboard System
 
 <p align="center">
   <img src="leaderboard.svg" alt="Real-time Leaderboard System" width="100%" />
 </p>
 
-#### 🚀 Overview
+####  Overview
 The **Real-time Leaderboard System** dynamically updates competition rankings based on users’ submissions, execution scores, and performance metrics.  
 It ensures instant feedback, motivates participation, and maintains fairness during competitive programming events.
