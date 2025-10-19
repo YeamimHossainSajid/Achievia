@@ -27,26 +27,29 @@
 
 ## Table of Contents
 
-- [Overview](#overview)  
-- [Features](#features)  
-- [System Architecture](#system-architecture)  
-- [Tech Stack](#tech-stack)  
-- [Installation](#installation)  
-- [API Documentation](#api-documentation)  
-- [Database Schema](#database-schema)  
-- [Workflows](#workflows)  
-- [Contributing](#contributing)  
-- [License](#license)  
-- [Support](#support)  
-- [Acknowledgments](#acknowledgments)  
+1. Overview
+2. The Problem We Solve
+3. Features
+4. System Architecture
+5. Database Design & Optimization
+6. Project Architecture
+7. Real-time Chat System
+8. Gamification & Habit Engine
+9. Key Business Logic Flows
+10. Real-time Leaderboard System
+11. Installation & Setup Guide
+12. Business Model
+13. Contributing
+14. License
+15. Support
+16. Acknowledgments
 
----
 
 ## Overview
 
 **Achievia** is a comprehensive competitive programming platform designed to help developers enhance their coding skills through structured competitions, real-time feedback, and community engagement.  
 
-Built with **Spring Boot 3** and **Java 21**, Achievia provides a robust backend for coding challenges, user progression tracking, and competition management.  
+Built with **Spring Boot 3** and **Java 17**, Achievia provides a robust backend for coding challenges, user progression tracking, and competition management.  
 
 > "Where Code Meets Growth" – Bridging the gap between learning and competitive programming excellence.
 
@@ -270,9 +273,9 @@ src/main/java/com/yeamim/achievia/
 
 This highly modular architecture ensures each feature is self-contained with its own complete stack:
 
-**Controller → Service → Repository → Entity → Payload**  
+**Controller → Service → Repository → Entity**  
 
-This makes your codebase **extremely maintainable, testable, and scalable**. 🚀
+This makes the codebase **extremely maintainable, testable, and scalable**. 🚀
 
 ## 💬 Real-time Chat System
 
@@ -403,7 +406,7 @@ It ensures continuous engagement through streaks, reminders, and XP rewards for 
 The **Real-time Leaderboard System** dynamically updates competition rankings based on users’ submissions, execution scores, and performance metrics.  
 It ensures instant feedback, motivates participation, and maintains fairness during competitive programming events.
 
-# Installation & Setup Guide ✅
+# Installation & Setup Guide 
 
 Follow these steps to set up **Achievia** locally.
 
@@ -430,8 +433,53 @@ Access API at : http://localhost:8080/api/v1/
 | **Recruiter Portal**   | Partner companies can access top-ranked coders     |
 | **Ads & Sponsorships** | Ethical ads displayed on leaderboard & event pages |
 
-> “Achievia isn’t just a platform — it’s where learning becomes a competition, and competition becomes mastery.”
+## Contributing
 
-*— Developed by Yeamim Hossain Sajid*
+We ❤️ contributions! Achievia thrives thanks to the community. Here's how you can help:
+
+### How to Contribute
+1. **Fork** the repository  
+2. Create a **feature branch**: `git checkout -b feature/amazing-feature`  
+3. **Commit** your changes: `git commit -m "Add amazing feature"`  
+4. **Push** to the branch: `git push origin feature/amazing-feature`  
+5. Open a **Pull Request** and collaborate  
+
+### Development Guidelines
+- Follow **Java coding conventions**  
+- Write **unit tests** for new features  
+- Update **documentation** as needed  
+- Ensure **all tests pass** before submitting  
+
+---
+
+## License
+
+This project is licensed under the **MIT License**.  
+See the [LICENSE](LICENSE) file for full details.
+
+---
+
+##  Support
+
+Need help or want to contribute? Reach out:  
+-  **Email**: yeamimhossainsajid@gmail.com  
+-  **Report Issues**: [GitHub Issues](https://github.com/YeamimHossainSajid/Achievia/issues)  
+-  **Join Discussions**: [GitHub Discussions](https://github.com/YeamimHossainSajid/Achievia/discussions)  
+
+---
+
+## Acknowledgments
+
+- **Judge0 API** – Secure, reliable code execution  
+- **Spring Boot** – Powerful backend framework  
+- **PostgreSQL** – High-performance database  
+- **Community & Contributors** – For making Achievia better every day  
+
+---
+
+## Developed By
+
+**Yeamim Hossain Sajid** – Building smarter coding experiences
+
 
 
