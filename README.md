@@ -74,3 +74,140 @@ Built with **Spring Boot 3** and **Java 21**, Achievia provides a robust backend
 
 ![High Level Architecture](highlevelarchitecture.svg)
 
+# Achievia - Project Architecture
+
+## Package Structure Breakdown
+
+```
+src/main/java/com/yeamim/achievia/
+├── 📁 feature/                    # Modular Feature Packages
+│   ├── 👤 user/                   # Complete User Module
+│   │   ├── controller/            # Handles all API endpoints related to users
+│   │   │   └── UserController.java
+│   │   ├── service/               # Business logic & operations
+│   │   │   └── UserService.java
+│   │   ├── repository/            # Database access for user entities
+│   │   │   └── UserRepository.java
+│   │   ├── entity/                # User data model
+│   │   │   └── UserEntity.java
+│   │   └── payload/               # DTOs for requests & responses
+│   │       ├── UserRequest.java
+│   │       ├── UserResponse.java
+│   │       └── ProfileUpdateRequest.java
+│   │
+│   ├── 🏆 competition/            # Complete Competition Module
+│   │   ├── controller/
+│   │   │   └── CompetitionController.java
+│   │   ├── service/
+│   │   │   └── CompetitionService.java
+│   │   ├── repository/
+│   │   │   └── CompetitionRepository.java
+│   │   ├── entity/
+│   │   │   └── CompetitionEntity.java
+│   │   └── payload/
+│   │       ├── CompetitionRequest.java
+│   │       ├── CompetitionResponse.java
+│   │       └── JoinCompetitionRequest.java
+│   │
+│   ├── 💻 problem/               # Complete Problem Module
+│   │   ├── controller/
+│   │   │   └── ProblemController.java
+│   │   ├── service/
+│   │   │   └── ProblemService.java
+│   │   ├── repository/
+│   │   │   └── ProblemRepository.java
+│   │   ├── entity/
+│   │   │   └── ProblemEntity.java
+│   │   └── payload/
+│   │       ├── ProblemRequest.java
+│   │       ├── ProblemResponse.java
+│   │       └── TestCaseRequest.java
+│   │
+│   ├── 📤 submission/            # Complete Submission Module
+│   │   ├── controller/
+│   │   │   └── SubmissionController.java
+│   │   ├── service/
+│   │   │   └── SubmissionService.java
+│   │   ├── repository/
+│   │   │   └── SubmissionRepository.java
+│   │   ├── entity/
+│   │   │   └── SubmissionEntity.java
+│   │   └── payload/
+│   │       ├── SubmissionRequest.java
+│   │       ├── SubmissionResponse.java
+│   │       └── CodeExecutionRequest.java
+│   │
+│   └── 💬 chat/                  # Complete Chat Module
+│       ├── controller/
+│       │   └── ChatController.java
+│       ├── service/
+│       │   └── ChatService.java
+│       ├── repository/
+│       │   └── ChatRepository.java
+│       ├── entity/
+│       │   └── ChatMessageEntity.java
+│       └── payload/
+│           ├── ChatMessageRequest.java
+│           ├── ChatMessageResponse.java
+│           └── TypingNotificationRequest.java
+│
+├── 🔐 auth/                      # Complete Auth Module
+│   ├── controller/
+│   │   └── AuthController.java
+│   ├── service/
+│   │   └── AuthService.java
+│   ├── repository/
+│   │   └── AuthRepository.java
+│   ├── entity/
+│   │   └── AuthEntity.java
+│   └── payload/
+│       ├── LoginRequest.java
+│       ├── RegisterRequest.java
+│       ├── AuthResponse.java
+│       └── TokenRefreshRequest.java
+│
+├── ⚙️ config/                    # External Service Configurations
+│   ├── CohereConfig.java
+│   ├── CloudinaryConfig.java
+│   ├── SmtpConfig.java
+│   ├── JwtConfig.java
+│   ├── WebSocketConfig.java
+│   ├── Judge0Config.java
+│   └── SecurityConfig.java
+│
+└── AchieviaApplication.java       # Spring Boot Main Class
+```
+
+## Module Architecture Benefits
+
+### 🎯 Modular Design Advantages
+- **Independent Development:** Each module can be developed and tested separately  
+- **Clear Separation:** Business logic isolated in respective modules  
+- **Easy Maintenance:** Changes in one module don't affect others  
+- **Scalable:** New features can be added as separate modules  
+- **Team Collaboration:** Different teams can work on different modules  
+
+---
+
+## 📊 Module Responsibilities
+
+| Module        | Controller          | Service            | Repository       | Entity           | Payload                  |
+|---------------|------------------|-----------------|----------------|----------------|-------------------------|
+| User          | User endpoints     | Business logic  | Data access     | User data       | Request/Response DTOs   |
+| Competition   | Competition APIs   | Competition logic | Competition data | Competition model | Competition DTOs      |
+| Problem       | Problem CRUD       | Problem management | Problem data  | Problem model   | Problem DTOs           |
+| Submission    | Code submission    | Code execution  | Submission data | Submission model | Submission DTOs        |
+| Chat          | Message handling   | Real-time logic | Message data    | Message model   | Message DTOs           |
+| Auth          | Login/Register     | Auth logic      | User auth data  | Auth model      | Auth DTOs              |
+
+---
+
+## 🔄 External Services Integration Flow
+
+This highly modular architecture ensures each feature is self-contained with its own complete stack:
+
+**Controller → Service → Repository → Entity → Payload**  
+
+This makes your codebase **extremely maintainable, testable, and scalable**. 🚀
+
+
