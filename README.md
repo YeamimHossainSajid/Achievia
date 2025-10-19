@@ -2,19 +2,26 @@
 
 <div align="center">
 
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-6DB33F?style=for-the-badge&logo=springboot)](https://spring.io/projects/spring-boot)  
-[![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk)](https://www.oracle.com/java/)  
-[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql)](https://www.mysql.com/)  
-[![JWT Auth](https://img.shields.io/badge/JWT-Auth-000000?style=for-the-badge&logo=jsonwebtokens)](https://jwt.io/)  
+**Transform Your Coding Skills Through Competition and Community** 🚀  
 
- Transform Your Coding Skills Through Competition and Community  
+<!-- Tech Stack Badges -->
+<p>
+  <a href="https://spring.io/projects/spring-boot"><img src="https://img.shields.io/badge/Spring%20Boot-Stable-6DB33F?style=flat-square&logo=springboot" alt="Spring Boot"/></a>
+  <a href="https://www.oracle.com/java/"><img src="https://img.shields.io/badge/Java-17-ED8B00?style=flat-square&logo=openjdk" alt="Java 17"/></a>
+  <a href="https://www.postgresql.org/"><img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql" alt="PostgreSQL"/></a>
+  <a href="https://jwt.io/"><img src="https://img.shields.io/badge/JWT-Auth-000000?style=flat-square&logo=jsonwebtokens" alt="JWT"/></a>
+</p>
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  
-[![Issues](https://img.shields.io/github/issues/YeamimHossainSajid/Achievia)](https://github.com/YeamimHossainSajid/Achievia/issues)  
-[![Forks](https://img.shields.io/github/forks/YeamimHossainSajid/Achievia)](https://github.com/YeamimHossainSajid/Achievia/network/members)  
-[![Stars](https://img.shields.io/github/stars/YeamimHossainSajid/Achievia)](https://github.com/YeamimHossainSajid/Achievia/stargazers)  
+<!-- Project Stats Badges -->
+<p>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="License"/></a>
+  <a href="https://github.com/YeamimHossainSajid/Achievia/issues"><img src="https://img.shields.io/github/issues/YeamimHossainSajid/Achievia?style=flat-square" alt="Issues"/></a>
+  <a href="https://github.com/YeamimHossainSajid/Achievia/network/members"><img src="https://img.shields.io/github/forks/YeamimHossainSajid/Achievia?style=flat-square" alt="Forks"/></a>
+  <a href="https://github.com/YeamimHossainSajid/Achievia/stargazers"><img src="https://img.shields.io/github/stars/YeamimHossainSajid/Achievia?style=flat-square" alt="Stars"/></a>
+</p>
 
 </div>
+
 
 ---
 
