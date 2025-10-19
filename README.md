@@ -274,6 +274,25 @@ This highly modular architecture ensures each feature is self-contained with its
 
 This makes your codebase **extremely maintainable, testable, and scalable**. 🚀
 
+## 💬 Real-time Chat System
+
+<p align="center">
+  <img src="chatting.svg" alt="WebSocket Chat System" width="100%" />
+</p>
+
+### ⚡ Overview
+Achievia features a **real-time chat system** powered by **WebSocket**, enabling instant messaging between users during competitions, guild discussions, and peer interactions.
+
+### 🧩 Key Highlights
+- **Instant Communication**: Low-latency, real-time message delivery  
+- **Scalable Architecture**: Supports multiple concurrent users efficiently  
+- **Secure & Reliable**: Messages routed through authenticated WebSocket channels  
+- **Backend Powered**: No frontend dependencies required for core chat functionality  
+- **Modular Design**: Easily extendable to future features like chat rooms or notifications  
+
+> “Seamless communication in Achievia, driven entirely by backend WebSocket architecture.”
+
+
 #  Gamification & Habit Engine
 
 > Powering developer motivation through progress tracking, XP, and achievements.
