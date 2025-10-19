@@ -308,6 +308,10 @@ public class HabitEngine {
     }
 }
 ```
+#### Why Gamification Matters
+
+Gamification keeps developers consistent and motivated by turning coding into measurable, rewarding progress.
+Users stay 3x longer engaged when XP, streaks, and achievements are tracked in real time.
 
 ##  Achievement & XP System
 
@@ -379,3 +383,36 @@ It ensures continuous engagement through streaks, reminders, and XP rewards for 
 ####  Overview
 The **Real-time Leaderboard System** dynamically updates competition rankings based on users’ submissions, execution scores, and performance metrics.  
 It ensures instant feedback, motivates participation, and maintains fairness during competitive programming events.
+
+# Installation & Setup Guide ✅
+
+Follow these steps to set up **Achievia** locally.
+
+---
+
+## Clone the repository
+```bash
+git clone https://github.com/YeamimHossainSajid/Achievia.git
+cd Achievia
+
+mvn clean install
+mvn spring-boot:run
+
+Access API at : http://localhost:8080/api/v1/
+
+```
+
+# Business Model 
+
+| Source              | Description                                           |
+|--------------------|-------------------------------------------------------|
+| **Premium Challenges** | Paid access to company-branded coding contests      |
+| **Certifications**     | Verified coding certificates for top performers    |
+| **Recruiter Portal**   | Partner companies can access top-ranked coders     |
+| **Ads & Sponsorships** | Ethical ads displayed on leaderboard & event pages |
+
+> “Achievia isn’t just a platform — it’s where learning becomes a competition, and competition becomes mastery.”
+
+*— Developed by Yeamim Hossain Sajid*
+
+
