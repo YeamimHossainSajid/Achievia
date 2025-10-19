@@ -97,6 +97,8 @@ public class GamificationEngine {
     }
 }
 ```
+## Intelligent Habit Engine
+
 ![Habit Engine](habitengine.svg)
 
 ## 🏗️ System Architecture
