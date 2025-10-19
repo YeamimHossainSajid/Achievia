@@ -177,6 +177,9 @@ src/main/java/com/yeamim/achievia/
 │
 └── AchieviaApplication.java       # Spring Boot Main Class
 ```
+## Data Flow Per Module
+
+![Data Flow Module](dataflowmodule.svg)
 
 ## Module Architecture Benefits
 
