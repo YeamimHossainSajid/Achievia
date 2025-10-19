@@ -77,29 +77,7 @@ Built with **Spring Boot 3** and **Java 21**, Achievia provides a robust backend
 - **Real-time Notifications**: Updates on competitions and results  
 
 ---
-## 🎮 Gamification Engine
 
-```java
-@Component
-public class GamificationEngine {
-
-    public AchievementResult checkAchievements(UserEvent event) {
-        return CompletableFuture.supplyAsync(() -> {
-            // Real-time achievement processing
-            List<Achievement> unlocked = achievementValidator
-                .validate(event)
-                .stream()
-                .filter(Achievement::isUnlocked)
-                .collect(Collectors.toList());
-            
-            return new AchievementResult(unlocked, calculateXP(event));
-        });
-    }
-}
-```
-## Intelligent Habit Engine
-
-![Habit Engine](habitengine.svg)
 
 ## 🏗️ System Architecture
 
@@ -248,4 +226,95 @@ This highly modular architecture ensures each feature is self-contained with its
 
 This makes your codebase **extremely maintainable, testable, and scalable**. 🚀
 
+# 🎮 Gamification & Habit Engine
 
+> Powering developer motivation through progress tracking, XP, and achievements.
+
+---
+
+## 💡 Overview
+
+The **Gamification & Habit Engine** transforms learning into a continuous growth journey.  
+It dynamically tracks user habits, calculates progress, awards XP, and unlocks achievements — ensuring sustained engagement and measurable skill improvement.
+
+---
+
+## ⚙️ Habit Tracking Engine
+
+<p align="center">
+  <img src="habitengine.svg" alt="Habit Engine" width="100%" />
+</p>
+
+```java
+@Component
+public class HabitEngine {
+
+    public HabitStats calculateStats(User user) {
+        // Compute habit metrics for the last 30 days
+        HabitStats stats = new HabitStats();
+        stats.setCompletionRate(87); // %
+        stats.setAverageStreak(14);  // days
+        stats.setSkillImprovement(2.3); // multiplier
+        stats.setGoalAchievement(68); // %
+        return stats;
+    }
+}
+```
+
+## 🏅 Achievement & XP System
+
+![Xp and Level](xpandlevel.svg)
+
+```java
+@Component
+public class GamificationEngine {
+
+    public AchievementResult checkAchievements(UserEvent event) {
+        return CompletableFuture.supplyAsync(() -> {
+            List<Achievement> unlocked = achievementValidator
+                .validate(event)
+                .stream()
+                .filter(Achievement::isUnlocked)
+                .collect(Collectors.toList());
+
+            int xpEarned = calculateXP(event);
+            return new AchievementResult(unlocked, xpEarned);
+        });
+    }
+
+    private int calculateXP(UserEvent event) {
+        // Example XP calculation based on event type
+        switch (event.getType()) {
+            case "SUBMISSION": return 50;
+            case "CHALLENGE_COMPLETION": return 200;
+            default: return 10;
+        }
+    }
+}
+```
+### ⚡ XP & Level Progression
+
+| Level Range | XP / Level | Notes |
+|--------------|-------------|--------|
+| **1 - 10** | 1000 | 🎯 Beginner Tier |
+| **11 - 50** | 2500 | ⚙️ Intermediate Tier |
+| **51+** | 5000 | 🚀 Advanced Tier |
+| **Max Level: 100** | — | 💎 Elite Coder Status |
+
+## 🔁 Key Business Logic Flows
+
+### 🏆 Competition Participation Flow
+
+<p align="center">
+  <img src="competitionflow.svg" alt="Competition Participation Flow" width="100%" />
+</p>
+
+### 🔥 Habit Tracking Flow
+
+<p align="center">
+  <img src="habitflow.svg" alt="Habit Tracking Flow" width="100%" />
+</p>
+
+#### 🧩 Overview
+The **Habit Tracking Flow** monitors user behavior, learning consistency, and progress toward coding or learning goals.  
+It ensures continuous engagement through streaks, reminders, and XP rewards for maintaining daily habits.
