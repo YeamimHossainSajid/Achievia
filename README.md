@@ -207,6 +207,8 @@ src/main/java/com/yeamim/achievia/
 
 ## 🔄 External Services Integration Flow
 
+![External Service](externalservice.svg)
+
 This highly modular architecture ensures each feature is self-contained with its own complete stack:
 
 **Controller → Service → Repository → Entity → Payload**  
