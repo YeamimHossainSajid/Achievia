@@ -72,13 +72,5 @@ Built with **Spring Boot 3** and **Java 21**, Achievia provides a robust backend
 
 ### High-Level Architecture
 
-```mermaid
-flowchart TD
-    A[User Registration/Login] --> B[Profile Created]
-    B --> C[Join Competitions / Guilds / Chat Rooms]
-    B --> D[Start Habits]
-    C --> E[Submit Problems / Chat / Participate]
-    D --> F[Log Habits / Gain XP]
-    E --> G[Leaderboard / Achievements]
-    F --> G
-    G --> H[Wallet Transactions / Marketplace Purchases]
+![High Level Architecture](highlevelarchitecture.svg)
+
