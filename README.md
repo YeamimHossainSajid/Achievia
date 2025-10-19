@@ -1,8 +1,13 @@
-# Achievia - Competitive Programming & Learning Platform 
+<div align="center">
+  <h1>Achievia - Competitive Programming & Learning Platform</h1>
+</div>
+
+
+ 
 
 <div align="center">
 
-**Transform Your Coding Skills Through Competition and Community** 🚀  
+**Transform Your Coding Skills Through Competition and Community**   
 
 <!-- Tech Stack Badges -->
 <p>
@@ -477,9 +482,12 @@ Need help or want to contribute? Reach out:
 
 ---
 
-## Developed By
+<div align="center">
 
-**Yeamim Hossain Sajid** – Building smarter coding experiences
+<h2>🚀 Developed By</h2>
+<p><strong>Yeamim Hossain Sajid</strong> – Building Smarter Coding Experiences ✨</p>
+
+</div>
 
 
 
