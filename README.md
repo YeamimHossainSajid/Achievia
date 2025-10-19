@@ -45,6 +45,16 @@ Built with **Spring Boot 3** and **Java 21**, Achievia provides a robust backend
 
 ---
 
+## 💡 The Problem We Solve
+
+| Problem             | Industry Impact                                 | Our Solution                                                   |
+|---------------------|-----------------------------------------------|------------------------------------------------------------------|
+| Skill Stagnation    | 68% of developers plateau after 2 years        | Progressive Learning Paths with continuous challenge escalation |
+| Isolated Learning   | Limited peer feedback and collaboration        | Community Code Reviews & real-time pair programming             |
+| Poor Interview Prep | 45% failure rate in technical interviews       | Real-world Scenario Simulations with company-specific challenges|
+| No Progress Tracking| Difficulty measuring coding improvement        | AI-Powered Analytics Dashboard with skill metrics               |
+
+
 ## ✨ Features
 
 ### 🏆 Core Features
@@ -67,6 +77,27 @@ Built with **Spring Boot 3** and **Java 21**, Achievia provides a robust backend
 - **Real-time Notifications**: Updates on competitions and results  
 
 ---
+## 🎮 Gamification Engine
+
+```java
+@Component
+public class GamificationEngine {
+
+    public AchievementResult checkAchievements(UserEvent event) {
+        return CompletableFuture.supplyAsync(() -> {
+            // Real-time achievement processing
+            List<Achievement> unlocked = achievementValidator
+                .validate(event)
+                .stream()
+                .filter(Achievement::isUnlocked)
+                .collect(Collectors.toList());
+            
+            return new AchievementResult(unlocked, calculateXP(event));
+        });
+    }
+}
+```
+![Habit Engine](habitengine.svg)
 
 ## 🏗️ System Architecture
 
