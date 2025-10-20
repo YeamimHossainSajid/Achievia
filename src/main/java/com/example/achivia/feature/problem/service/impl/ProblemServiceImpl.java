@@ -26,7 +26,7 @@ public class ProblemServiceImpl implements ProblemService {
     public ProblemResponseDTO createProblem(ProblemRequestDTO request) {
         UUID newId = UUID.randomUUID();
 
-        User creator = userRepository.findById(request.getCreatorUserId());
+        User creator = userRepository.findById(request.getCreatorUserId()).get();
 
         problemRepository.insertProblem(
                 newId,

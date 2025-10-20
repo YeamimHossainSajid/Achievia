@@ -28,7 +28,7 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public InventoryResponseDto create(InventoryRequestDto request) {
-        User user = userRepository.findById(request.getUserId());
+        User user = userRepository.findById(request.getUserId()).get();
         ShopItem shopItem = shopItemRepository.findById(request.getShopItemId())
                 .orElseThrow(() -> new RuntimeException("ShopItem not found"));
 

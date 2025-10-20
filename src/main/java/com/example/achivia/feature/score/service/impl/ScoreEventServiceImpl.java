@@ -28,7 +28,7 @@ public class ScoreEventServiceImpl implements ScoreEventService {
         UUID id = UUID.randomUUID();
         LocalDateTime now = LocalDateTime.now();
 
-        User user = userRepository.findById(requestDto.getUserId());
+        User user = userRepository.findById(requestDto.getUserId()).get();
 
         repository.insertScoreEvent(
                 id,

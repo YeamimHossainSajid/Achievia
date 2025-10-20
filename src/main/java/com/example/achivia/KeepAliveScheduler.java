@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 public class KeepAliveScheduler {
     private static final Logger logger = LoggerFactory.getLogger(KeepAliveScheduler.class);
     private static final String HEALTHCHECK_URL = "https://achievia-hwcb.onrender.com";
-    @Scheduled(fixedRate = 30000)
+    @Scheduled(fixedRate = 300000)
     public void pingBackend() {
         try {
             RestTemplate restTemplate = new RestTemplate();

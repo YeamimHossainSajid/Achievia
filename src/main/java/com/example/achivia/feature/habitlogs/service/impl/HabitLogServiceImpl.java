@@ -39,7 +39,7 @@ public class HabitLogServiceImpl implements HabitLogService {
     }
 
     private HabitLog convertToEntity(HabitLogRequestDto dto) {
-        User user = userRepository.findById(dto.getUserId());
+        User user = userRepository.findById(dto.getUserId()).get();
         Habit habit = habitRepository.findById(dto.getHabitId())
                 .orElseThrow(() -> new RuntimeException("Habit not found"));
 

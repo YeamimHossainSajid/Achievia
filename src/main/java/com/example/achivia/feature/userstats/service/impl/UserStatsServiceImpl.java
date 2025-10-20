@@ -23,7 +23,7 @@ public class UserStatsServiceImpl implements UserStatsService {
 
     @Override
     public UserStatsResponseDto createUserStats(UserStatsRequestDto requestDto) {
-        User user = userRepository.findById(requestDto.getUserId());
+        User user = userRepository.findById(requestDto.getUserId()).orElse(null);
 
         UserStats stats = UserStats.builder()
                 .user(user)

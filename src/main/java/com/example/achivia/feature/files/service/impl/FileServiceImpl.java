@@ -23,7 +23,7 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public FileResponseDto createFile(FileRequestDto dto) {
-        User uploader = userRepo.findById(dto.getUploaderUserId());
+        User uploader = userRepo.findById(dto.getUploaderUserId()).get();
 
         File file = File.builder()
                 .uploaderUser(uploader)

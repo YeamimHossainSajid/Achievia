@@ -26,7 +26,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public BlogResponseDto createBlog(BlogRequestDto requestDto) {
-        User author = userRepository.findById(requestDto.getAuthorId());
+        User author = userRepository.findById(requestDto.getAuthorId()).orElse(null);
 
         Blog blog = Blog.builder()
                 .author(author)

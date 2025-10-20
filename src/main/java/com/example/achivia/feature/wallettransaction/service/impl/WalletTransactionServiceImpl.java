@@ -25,7 +25,7 @@ public class WalletTransactionServiceImpl implements WalletTransactionService {
 
     @Override
     public WalletTransactionResponseDto createTransaction(WalletTransactionRequestDto requestDto) {
-        User user = userRepository.findById(requestDto.getUserId());
+        User user = userRepository.findById(requestDto.getUserId()).orElse(null);
 
         WalletTransaction transaction = WalletTransaction.builder()
                 .user(user)
@@ -41,13 +41,13 @@ public class WalletTransactionServiceImpl implements WalletTransactionService {
 
     @Override
     public List<WalletTransactionResponseDto> getTransactionsByUser(Long userId) {
-        List<WalletTransaction> transactions = repository.findByUserIdNative(userId);
+        List<WalletTransaction> transactions = repository.findByUserId(userId);
         return transactions.stream().map(this::mapToDto).collect(Collectors.toList());
     }
 
     @Override
     public WalletTransactionResponseDto getTransactionById(UUID id) {
-        WalletTransaction transaction = repository.findByIdNative(id);
+        WalletTransaction transaction = repository.findById(id).orElse(null);
         if (transaction == null) throw new RuntimeException("Transaction not found");
         return mapToDto(transaction);
     }

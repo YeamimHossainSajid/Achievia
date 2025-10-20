@@ -25,7 +25,7 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public NotificationResponseDto create(NotificationRequestDto request) {
-        User user = userRepository.findById(request.getUserId());
+        User user = userRepository.findById(request.getUserId()).get();
 
         Notification notification = convertToEntity(request, user);
         Notification saved = notificationRepository.save(notification);

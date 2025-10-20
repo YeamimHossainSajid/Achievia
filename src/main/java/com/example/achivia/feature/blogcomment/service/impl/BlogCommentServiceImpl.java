@@ -29,7 +29,7 @@ public class BlogCommentServiceImpl implements BlogCommentService {
         Blog blog = blogRepository.findById(requestDto.getBlogId())
                 .orElseThrow(() -> new EntityNotFoundException("Blog not found"));
 
-        User user = userRepository.findById(requestDto.getUserId());
+        User user = userRepository.findById(requestDto.getUserId()).get();
 
         BlogComment parentComment = null;
         if (requestDto.getParentCommentId() != null) {
@@ -56,7 +56,6 @@ public class BlogCommentServiceImpl implements BlogCommentService {
                 .collect(Collectors.toList());
     }
 
-    // Recursive method to build comment tree
     private BlogCommentResponseDto buildCommentTree(BlogComment comment) {
         List<BlogComment> replies = commentRepository.findRepliesByParentId(comment.getId());
 

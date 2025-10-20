@@ -42,7 +42,7 @@ public class GuildInvitationServiceImpl implements GuildInvitationService {
         Guild guild = guildRepository.findById(requestDto.getGuildId())
                 .orElseThrow(() -> new EntityNotFoundException("Guild not found"));
 
-        User inviter = userRepo.findById(requestDto.getInviterUserId());
+        User inviter = userRepo.findById(requestDto.getInviterUserId()).get();
 
         GuildInvitation invitation = GuildInvitation.builder()
                 .guild(guild)

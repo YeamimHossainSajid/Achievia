@@ -30,7 +30,7 @@ public class BlogVoteServiceImpl implements BlogVoteService {
         Blog blog = blogRepository.findById(requestDto.getBlogId())
                 .orElseThrow(() -> new EntityNotFoundException("Blog not found"));
 
-        User user = userRepository.findById(requestDto.getUserId());
+        User user = userRepository.findById(requestDto.getUserId()).get();
 
         BlogVote vote = voteRepository.findByBlogIdAndUserId(requestDto.getBlogId(), requestDto.getUserId())
                 .orElse(BlogVote.builder()

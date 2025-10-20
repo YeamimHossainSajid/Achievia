@@ -23,8 +23,7 @@ public class UserWalletServiceImpl implements UserWalletService {
 
     @Override
     public UserWalletResponseDto createWallet(UserWalletRequestDto requestDto) {
-        User user = userRepository.findById(requestDto.getUserId())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userRepository.findById(requestDto.getUserId()).get();
 
         UserWallet wallet = UserWallet.builder()
                 .user(user)

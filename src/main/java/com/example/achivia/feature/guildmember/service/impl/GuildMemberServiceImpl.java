@@ -39,7 +39,7 @@ public class GuildMemberServiceImpl implements GuildMemberService {
         Guild guild = guildRepository.findById(requestDto.getGuildId())
                 .orElseThrow(() -> new EntityNotFoundException("Guild not found"));
 
-        User user = userRepo.findById(requestDto.getUserId());
+        User user = userRepo.findById(requestDto.getUserId()).get();
 
         GuildMemberId memberId = new GuildMemberId(guild.getId(), user.getId());
 

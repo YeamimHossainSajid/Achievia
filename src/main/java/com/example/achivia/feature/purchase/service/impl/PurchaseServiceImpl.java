@@ -27,7 +27,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     @Override
     public PurchaseResponseDto createPurchase(PurchaseRequestDto requestDto) {
-        User user = userRepository.findById(requestDto.getUserId());
+        User user = userRepository.findById(requestDto.getUserId()).get();
         ShopItem shopItem = shopItemRepository.findById(requestDto.getShopItemId())
                 .orElseThrow(() -> new RuntimeException("Shop item not found"));
 

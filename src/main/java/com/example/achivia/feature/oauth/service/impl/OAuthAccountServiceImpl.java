@@ -26,7 +26,7 @@ public class OAuthAccountServiceImpl implements OAuthAccountService {
 
     @Override
     public OAuthAccountResponseDto createOAuthAccount(OAuthAccountRequestDto dto) {
-        User user = userRepository.findById(dto.getUserId());
+        User user = userRepository.findById(dto.getUserId()).get();
 
         OAuthAccount account = OAuthAccount.builder()
                 .user(user)

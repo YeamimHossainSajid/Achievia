@@ -25,7 +25,7 @@ public class HabitTemplateServiceImpl implements HabitTemplateService {
 
     @Override
     public HabitTemplateResponseDto create(HabitTemplateRequestDto request) {
-        User user = userRepository.findById(request.getCreatedByUserId());
+        User user = userRepository.findById(request.getCreatedByUserId()).get();
 
         HabitTemplate template = convertToEntity(request, user);
         HabitTemplate saved = habitTemplateRepository.save(template);
@@ -68,7 +68,6 @@ public class HabitTemplateServiceImpl implements HabitTemplateService {
         habitTemplateRepository.deleteByIdNative(id);
     }
 
-    // ✅ Conversion methods
     private HabitTemplate convertToEntity(HabitTemplateRequestDto dto, User user) {
         return HabitTemplate.builder()
                 .name(dto.getName())

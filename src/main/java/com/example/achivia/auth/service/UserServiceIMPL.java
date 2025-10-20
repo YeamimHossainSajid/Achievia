@@ -124,7 +124,7 @@ public class UserServiceIMPL implements UserService {
 
 
     public User setUserRoles(UserRoleRequestDTO requestDTO) {
-        User foundUser = userRepository.findById(requestDTO.userId());
+        User foundUser = userRepository.findById(requestDTO.userId()).get();
 
         if (foundUser == null) {
             throw new RuntimeException("User with id " + requestDTO.userId() + " not found.");
@@ -138,7 +138,7 @@ public class UserServiceIMPL implements UserService {
 
     @Override
     public void updateUser(UUID id, UserRequestDTO userRequestDTO) {
-        User user = userRepository.findById(id);
+        User user = userRepository.findById(id).get();
 
         User updateUser = ConvertToEntity(user, userRequestDTO);
         userRepository.save(updateUser);

@@ -24,7 +24,7 @@ public class CompetitionServiceImpl implements CompetitionService {
     @Override
     public CompetitionResponseDto createCompetition(CompetitionRequestDto requestDTO) {
         UUID id = UUID.randomUUID();
-        User hostUser = userRepository.findById(requestDTO.getHostUserId());
+        User hostUser = userRepository.findById(requestDTO.getHostUserId()).get();
 
         Competition competition = convertToEntity(requestDTO, hostUser);
         competitionRepository.insertCompetition(
@@ -48,7 +48,7 @@ public class CompetitionServiceImpl implements CompetitionService {
         competitionRepository.findCompetitionById(id)
                 .orElseThrow(() -> new RuntimeException("Competition not found"));
 
-        User hostUser = userRepository.findById(requestDTO.getHostUserId());
+        User hostUser = userRepository.findById(requestDTO.getHostUserId()).get();
 
         Competition competition = convertToEntity(requestDTO, hostUser);
 

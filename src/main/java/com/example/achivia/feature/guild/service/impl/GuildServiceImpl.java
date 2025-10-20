@@ -47,7 +47,7 @@ public class GuildServiceImpl implements GuildService {
 
     @Override
     public GuildResponseDto createGuild(GuildRequestDto requestDto) {
-        User owner = userRepo.findById(requestDto.getOwnerUserId());
+        User owner = userRepo.findById(requestDto.getOwnerUserId()).get();
 
         Guild guild = convertToEntity(requestDto, owner);
         Guild saved = guildRepository.save(guild);

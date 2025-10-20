@@ -23,7 +23,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     public UserProfileResponseDto createProfile(UserProfileRequestDto requestDto) {
-        User user = userRepository.findById(requestDto.getUserId());
+        User user = userRepository.findById(requestDto.getUserId()).get();
 
         UserProfile profile = UserProfile.builder()
                 .user(user)

@@ -42,7 +42,7 @@ public class HabitServiceImpl implements HabitService {
     }
 
     private Habit convertToEntity(HabitRequestDto dto) {
-        User user = userRepository.findById(dto.getUserId());
+        User user = userRepository.findById(dto.getUserId()).orElse(null);
 
         HabitTemplate template = null;
         if (dto.getTemplateId() != null) {

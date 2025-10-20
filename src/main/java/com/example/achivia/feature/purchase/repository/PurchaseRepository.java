@@ -1,40 +1,44 @@
 package com.example.achivia.feature.purchase.repository;
 
 import com.example.achivia.feature.purchase.entity.Purchase;
-import org.springframework.data.jpa.repository.*;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-    @Repository
-    public interface PurchaseRepository extends JpaRepository<Purchase, UUID> {
+@Repository
+public interface PurchaseRepository extends JpaRepository<Purchase, UUID> {
 
-        @Query(value = """
-        SELECT * FROM purchases
+    @Query(value = """
+        SELECT * FROM purchase
         WHERE user_id = :userId
-        ORDER BY created_at DESC
         """, nativeQuery = true)
-        List<Purchase> findPurchasesByUserId(@Param("userId") Long userId);
+    List<Purchase> findPurchasesByUserId(Long userId);
 
-
-        @Query(value = """
-        SELECT * FROM purchases
+    @Query(value = """
+        SELECT * FROM purchase
         WHERE id = :id
         """, nativeQuery = true)
-        Optional<Purchase> findPurchaseById(@Param("id") UUID id);
+    Optional<Purchase> findByIdNative(UUID id);
 
-        @Modifying
-        @Query(value = """
-        INSERT INTO purchases (id, user_id, shop_item_id, price_paid, created_at)
-        VALUES (:id, :userId, :shopItemId, :pricePaid, :createdAt)
+    @Modifying
+    @Transactional
+    @Query(value = """
+        INSERT INTO purchase (id, user_id, shop_item_id, price_paid, created_at)
+        VALUES (:id, :userId, :shopItemId, :pricePaid, NOW())
         """, nativeQuery = true)
-        void insertPurchase(
-                @Param("id") UUID id,
-                @Param("userId") UUID userId,
-                @Param("shopItemId") UUID shopItemId,
-                @Param("pricePaid") Long pricePaid,
-                @Param("createdAt") LocalDateTime createdAt
-        );
-    }
+    void save(UUID id, Long userId, UUID shopItemId, Double pricePaid);
+
+    @Modifying
+    @Transactional
+    @Query(value = """
+        DELETE FROM purchase
+        WHERE id = :id
+        """, nativeQuery = true)
+    void deleteByIdNative(UUID id);
+}

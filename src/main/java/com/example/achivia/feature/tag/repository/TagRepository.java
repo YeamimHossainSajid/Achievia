@@ -1,9 +1,11 @@
 package com.example.achivia.feature.tag.repository;
 
 import com.example.achivia.feature.tag.entity.Tag;
-import org.springframework.data.jpa.repository.*;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,17 +13,40 @@ import java.util.UUID;
 
 @Repository
 public interface TagRepository extends JpaRepository<Tag, UUID> {
+    @Modifying
+    @Transactional
+    @Query(value = """
+        INSERT INTO tag (id, name)
+        VALUES (:id, :name)
+        """, nativeQuery = true)
+    void insertTag(UUID id, String name);
 
-    @Query(value = "SELECT * FROM tags WHERE id = :id", nativeQuery = true)
-    Optional<Tag> findByIdNative(@Param("id") UUID id);
+    @Query(value = """
+        SELECT * FROM tag
+        WHERE id = :id
+        """, nativeQuery = true)
+    Optional<Tag> findByIdNative(UUID id);
 
-    @Query(value = "SELECT * FROM tags WHERE name = :name", nativeQuery = true)
-    Optional<Tag> findByNameNative(@Param("name") String name);
-
-    @Query(value = "SELECT * FROM tags ORDER BY name ASC", nativeQuery = true)
+    @Query(value = """
+        SELECT * FROM tag
+        ORDER BY name ASC
+        """, nativeQuery = true)
     List<Tag> findAllNative();
 
     @Modifying
-    @Query(value = "INSERT INTO tags (id, name) VALUES (:id, :name)", nativeQuery = true)
-    void insertTag(@Param("id") UUID id, @Param("name") String name);
+    @Transactional
+    @Query(value = """
+        DELETE FROM tag
+        WHERE id = :id
+        """, nativeQuery = true)
+    void deleteByIdNative(UUID id);
+
+    @Modifying
+    @Transactional
+    @Query(value = """
+        UPDATE tag
+        SET name = :name
+        WHERE id = :id
+        """, nativeQuery = true)
+    void updateTag(UUID id, String name);
 }

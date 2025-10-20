@@ -30,7 +30,7 @@ public class CompetitionParticipantServiceImpl implements CompetitionParticipant
         Competition competition = competitionRepository.findById(requestDTO.getCompetitionId())
                 .orElseThrow(() -> new RuntimeException("Competition not found"));
 
-        User user = userRepository.findById(requestDTO.getUserId());
+        User user = userRepository.findById(requestDTO.getUserId()).get();
 
         CompetitionParticipantId id = new CompetitionParticipantId(requestDTO.getCompetitionId(), requestDTO.getUserId());
 
