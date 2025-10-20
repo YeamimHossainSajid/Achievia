@@ -27,21 +27,21 @@ public class CompetitionParticipantServiceImpl implements CompetitionParticipant
 
     @Override
     public CompetitionParticipantResponseDTO registerParticipant(CompetitionParticipantRequestDTO requestDTO) {
-        Competition competition = competitionRepository.findById(requestDTO.getCompetitionId())
-                .orElseThrow(() -> new RuntimeException("Competition not found"));
+        int rows = participantRepository.saveIfValid(
+                requestDTO.getCompetitionId(),
+                requestDTO.getUserId(),
+                requestDTO.getTotalScore()
+        );
 
-        User user = userRepository.findById(requestDTO.getUserId()).get();
-
-        CompetitionParticipantId id = new CompetitionParticipantId(requestDTO.getCompetitionId(), requestDTO.getUserId());
+        if (rows == 0) {
+            throw new RuntimeException("Invalid competition or user ID");
+        }
 
         CompetitionParticipant participant = CompetitionParticipant.builder()
-                .id(id)
-                .competition(competition)
-                .user(user)
+                .id(new CompetitionParticipantId(requestDTO.getCompetitionId(), requestDTO.getUserId()))
                 .totalScore(requestDTO.getTotalScore() != null ? requestDTO.getTotalScore() : 0)
                 .build();
 
-        participantRepository.save(participant);
         return mapToResponseDTO(participant);
     }
 

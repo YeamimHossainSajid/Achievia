@@ -70,7 +70,7 @@ public class GlobalWebSecurityConfig {
                             )
                             .permitAll()
                             .anyRequest()
-                            .authenticated();
+                            .permitAll();
 
                 })
                 .authenticationProvider(daoAuthenticationProvider())

@@ -26,27 +26,28 @@ public class BlogCommentServiceImpl implements BlogCommentService {
 
     @Override
     public BlogCommentResponseDto createComment(BlogCommentRequestDto requestDto) {
-        Blog blog = blogRepository.findById(requestDto.getBlogId())
-                .orElseThrow(() -> new EntityNotFoundException("Blog not found"));
+        UUID id = UUID.randomUUID();
 
-        User user = userRepository.findById(requestDto.getUserId()).get();
+        int rowsInserted = commentRepository.saveIfAllExist(
+                id,
+                requestDto.getBlogId(),
+                requestDto.getUserId(),
+                requestDto.getContent(),
+                requestDto.getParentCommentId()
+        );
 
-        BlogComment parentComment = null;
-        if (requestDto.getParentCommentId() != null) {
-            parentComment = commentRepository.findById(requestDto.getParentCommentId())
-                    .orElseThrow(() -> new EntityNotFoundException("Parent comment not found"));
+        if (rowsInserted == 0) {
+            throw new RuntimeException("Invalid blog ID, user ID, or parent comment ID");
         }
 
         BlogComment comment = BlogComment.builder()
-                .blog(blog)
-                .user(user)
+                .id(id)
                 .content(requestDto.getContent())
-                .parentComment(parentComment)
                 .build();
 
-        BlogComment saved = commentRepository.save(comment);
-        return convertToResponseDto(saved);
+        return convertToResponseDto(comment);
     }
+
 
     @Override
     public List<BlogCommentResponseDto> getCommentsByBlogId(UUID blogId) {

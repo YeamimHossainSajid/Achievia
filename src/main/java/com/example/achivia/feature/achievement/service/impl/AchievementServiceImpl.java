@@ -31,7 +31,6 @@ public class AchievementServiceImpl implements AchievementService {
                 .collect(Collectors.toList());
     }
 
-    // ------------------- GET BY ID -------------------
     @Override
     public AchievementResponseDto getAchievementById(UUID id) {
         Achievement achievement = repository.findById(id)
@@ -39,7 +38,6 @@ public class AchievementServiceImpl implements AchievementService {
         return mapToDto(achievement);
     }
 
-    // ------------------- INSERT -------------------
     @Override
     public AchievementResponseDto insertAchievement(AchievementRequestDto dto) {
         Achievement achievement = new Achievement();
@@ -49,14 +47,12 @@ public class AchievementServiceImpl implements AchievementService {
         achievement.setIconUrl(dto.getIconUrl());
         achievement.setPointsReward(dto.getPointsReward() != null ? dto.getPointsReward() : 0);
 
-        // Generate unique slug
         achievement.setSlug(generateUniqueSlug(dto.getName()));
 
         Achievement saved = repository.save(achievement);
         return mapToDto(saved);
     }
 
-    // ------------------- UPDATE -------------------
     @Override
     public AchievementResponseDto updateAchievement(UUID id, AchievementRequestDto dto) {
         Achievement achievement = repository.findById(id)
@@ -67,7 +63,6 @@ public class AchievementServiceImpl implements AchievementService {
         achievement.setIconUrl(dto.getIconUrl());
         achievement.setPointsReward(dto.getPointsReward() != null ? dto.getPointsReward() : achievement.getPointsReward());
 
-        // Update slug if name changed
         if (!achievement.getName().equals(dto.getName())) {
             achievement.setSlug(generateUniqueSlug(dto.getName()));
         }
@@ -76,7 +71,6 @@ public class AchievementServiceImpl implements AchievementService {
         return mapToDto(updated);
     }
 
-    // ------------------- DELETE -------------------
     @Override
     public void deleteAchievement(UUID id) {
         Achievement achievement = repository.findById(id)
@@ -84,7 +78,6 @@ public class AchievementServiceImpl implements AchievementService {
         repository.delete(achievement);
     }
 
-    // ------------------- DTO MAPPING -------------------
     private AchievementResponseDto mapToDto(Achievement achievement) {
         AchievementResponseDto dto = new AchievementResponseDto();
         dto.setId(achievement.getId());
@@ -97,7 +90,6 @@ public class AchievementServiceImpl implements AchievementService {
         return dto;
     }
 
-    // ------------------- UNIQUE SLUG GENERATION -------------------
     private String generateUniqueSlug(String name) {
         String baseSlug = name.toLowerCase().trim().replaceAll("[^a-z0-9]+", "-");
         String slug = baseSlug;

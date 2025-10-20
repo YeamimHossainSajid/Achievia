@@ -4,6 +4,7 @@ import com.example.achivia.feature.blog.entity.Blog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,13 +16,21 @@ import java.util.UUID;
 public interface BlogRepository extends JpaRepository<Blog, UUID> {
 
     @Modifying
-    @Transactional
     @Query(value = """
-        INSERT INTO blog
-        (id, author_id, title, slug, content, cover_image_url, is_published, created_at, updated_at)
-        VALUES (:id, :authorId, :title, :slug, :content, :coverImageUrl, :isPublished, :createdAt, :updatedAt)
+        INSERT INTO blog (id, author_id, title, slug, content, cover_image_url, is_published, created_at)
+        SELECT :id, :authorId, :title, :slug, :content, :coverImageUrl, :isPublished, NOW()
+        FROM users 
+        WHERE EXISTS (SELECT 1 FROM users WHERE id = :authorId)
         """, nativeQuery = true)
-    void save(UUID id, Long authorId, String title, String slug, String content, String coverImageUrl, Boolean isPublished, LocalDateTime createdAt, LocalDateTime updatedAt);
+    int saveIfUserExists(
+            @Param("id") UUID id,
+            @Param("authorId") UUID authorId,
+            @Param("title") String title,
+            @Param("slug") String slug,
+            @Param("content") String content,
+            @Param("coverImageUrl") String coverImageUrl,
+            @Param("isPublished") boolean isPublished
+    );
 
 
     @Query(value = """

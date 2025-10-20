@@ -14,6 +14,20 @@ import java.util.UUID;
 @Repository
 public interface CompetitionParticipantRepository extends JpaRepository<CompetitionParticipant, CompetitionParticipantId> {
 
+    @Modifying
+    @Query(value = """
+        INSERT INTO competition_participant (competition_id, user_id, total_score, registered_at)
+        SELECT :competitionId, :userId, COALESCE(:totalScore, 0), NOW()
+        FROM dual
+        WHERE EXISTS (SELECT 1 FROM competition WHERE id = :competitionId)
+          AND EXISTS (SELECT 1 FROM users WHERE id = :userId)
+        """, nativeQuery = true)
+    int saveIfValid(
+            @Param("competitionId") UUID competitionId,
+            @Param("userId") UUID userId,
+            @Param("totalScore") Integer totalScore
+    );
+
     @Query(value = """
             SELECT *
             FROM competition_participants
@@ -58,5 +72,7 @@ public interface CompetitionParticipantRepository extends JpaRepository<Competit
     void save(@Param("competitionId") UUID competitionId,
                              @Param("userId") UUID userId,
                              @Param("totalScore") Integer totalScore);
+
+
 }
 

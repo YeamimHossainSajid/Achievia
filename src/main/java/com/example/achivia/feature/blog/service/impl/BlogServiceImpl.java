@@ -26,10 +26,24 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public BlogResponseDto createBlog(BlogRequestDto requestDto) {
-        User author = userRepository.findById(requestDto.getAuthorId()).orElse(null);
+        UUID id = UUID.randomUUID();
+
+        int rowsInserted = blogRepository.saveIfUserExists(
+                id,
+                requestDto.getAuthorId(),
+                requestDto.getTitle(),
+                requestDto.getSlug(),
+                requestDto.getContent(),
+                requestDto.getCoverImageUrl(),
+                requestDto.isPublished()
+        );
+
+        if (rowsInserted == 0) {
+            throw new RuntimeException("Author not found with ID: " + requestDto.getAuthorId());
+        }
 
         Blog blog = Blog.builder()
-                .author(author)
+                .id(id)
                 .title(requestDto.getTitle())
                 .slug(requestDto.getSlug())
                 .content(requestDto.getContent())
@@ -37,9 +51,9 @@ public class BlogServiceImpl implements BlogService {
                 .isPublished(requestDto.isPublished())
                 .build();
 
-        blogRepository.save(blog);
         return mapToDto(blog);
     }
+
 
     @Override
     public BlogResponseDto updateBlog(UUID id, BlogRequestDto requestDto) {
