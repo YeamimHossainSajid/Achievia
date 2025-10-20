@@ -23,11 +23,5 @@ public class UserRequestDTO {
         @Size(min = 6, max = 100, message = "Password must be between 6 and 100 characters")
         private String password;
 
-        // Optional roles for the user (UUIDs of roles)
-        private Set<UUID> roleIds;
-
-        // Optional OAuth info if user signs up via Google/Facebook
-        private String authProvider;   // e.g., "google", "facebook"
-        private String authProviderId; // OAuth provider ID
 
 }
