@@ -24,8 +24,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping(value = "/add", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity< String > create(@ModelAttribute UserRequestDTO requestDto) throws IOException {
+    @PostMapping(value = "/add")
+    public ResponseEntity< String > create(@RequestBody UserRequestDTO requestDto) throws IOException {
       String s=  userService.create(requestDto);
         return ResponseEntity.ok(s);
     }
@@ -64,6 +64,5 @@ public class UserController {
     public ResponseEntity<CustomUserResponseDTO> searchByUserName(@PathVariable("username") String username) {
         return ResponseEntity.ok(userService.searchByUsername(username));
     }
-
 
 }

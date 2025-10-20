@@ -1,4 +1,5 @@
 package com.example.achivia.auth.model;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
@@ -18,6 +19,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "_user")
 public class User {
+
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
@@ -30,7 +32,10 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
+    private String slug;
+
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -47,7 +52,6 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "roles_id")
     )
     private Set<Role> roles = new LinkedHashSet<>();
-
 
     @Column(name = "auth_provider")
     private String authProvider;
@@ -66,5 +70,17 @@ public class User {
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
+    // ----------------------
+    // Generate slug automatically
+    // ----------------------
+    @PrePersist
+    @PreUpdate
+    public void generateSlug() {
+        if (this.username != null) {
+            // Convert username to lowercase, replace non-alphanumeric characters with hyphens
+            this.slug = username.toLowerCase().replaceAll("[^a-z0-9]+", "-");
+        }
+    }
 }
+
 

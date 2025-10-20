@@ -2,10 +2,7 @@ package com.example.achivia.auth.repository;
 
 import com.example.achivia.auth.dto.response.CustomUserResponseDTO;
 import com.example.achivia.auth.model.User;
-import com.example.achivia.auth.model.Role;
-import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -17,65 +14,43 @@ import java.util.UUID;
 @Repository
 public interface UserRepo extends JpaRepository<User, UUID> {
 
-    @Query(value = """
-            SELECT *
-            FROM users u
-            WHERE u.username = :username
-            """, nativeQuery = true)
-    User findByUsername(@Param("username") String username);
 
-    @Query(value = """
-            SELECT u.id AS id, u.username AS username, u.email AS email
-            FROM users u
-            WHERE u.id = :id
-            """, nativeQuery = true)
-    CustomUserResponseDTO findUserByUserId(@Param("id") UUID id);
+    @Query(value = "SELECT * FROM _user WHERE email = :email", nativeQuery = true)
+    Optional<User> findByEmailNative(@Param("email") String email);
 
-    @Query(value = """
-            SELECT *
-            FROM users u
-            WHERE u.id = :id
-            """, nativeQuery = true)
-    Optional<User> findById(@Param("id") UUID id);
 
-    @Query(value = """
-            SELECT u.id AS id, u.username AS username, u.email AS email
-            FROM users u
-            WHERE u.username LIKE %:username%
-            """, nativeQuery = true)
+    @Query(value = "SELECT * FROM _user WHERE username = :username", nativeQuery = true)
+    Optional<User> findByUsernameNative(@Param("username") String username);
+
+
+    @Query(value = "SELECT * FROM _user WHERE slug = :slug", nativeQuery = true)
+    Optional<User> findBySlugNative(@Param("slug") String slug);
+
+    @Query(value = "SELECT CASE WHEN COUNT(*) > 0 THEN true ELSE false END FROM _user WHERE email = :email", nativeQuery = true)
+    boolean existsByEmailNative(@Param("email") String email);
+
+    @Query(value = "SELECT CASE WHEN COUNT(*) > 0 THEN true ELSE false END FROM _user WHERE username = :username", nativeQuery = true)
+    boolean existsByUsernameNative(@Param("username") String username);
+
+
+    @Query(value = "SELECT CASE WHEN COUNT(*) > 0 THEN true ELSE false END FROM _user WHERE slug = :slug", nativeQuery = true)
+    boolean existsBySlugNative(@Param("slug") String slug);
+
+
+    @Query(value = "SELECT id AS id, username AS username, email AS email FROM _user WHERE username LIKE %:username%", nativeQuery = true)
     CustomUserResponseDTO searchByUsername(@Param("username") String username);
 
-    @Query(value = """
-            SELECT *
-            FROM roles r
-            WHERE r.id IN :ids
-            """, nativeQuery = true)
-    Set<Role> findAllByIdIn(@Param("ids") Set<Long> ids);
+    @Query(value = "SELECT * FROM _user WHERE id = :id", nativeQuery = true)
+    Optional<User> findUserById(@Param("id") UUID id);
 
-    @Modifying
-    @Query(value = """
-            INSERT INTO users (id, username, email, password)
-            VALUES (:id, :username, :email, :password)
-            """, nativeQuery = true)
-    void save(@Param("id") UUID id,
-                  @Param("username") String username,
-                  @Param("email") String email,
-                  @Param("password") String password);
+    @Query(value = "SELECT id AS id, username AS username, email AS email FROM _user WHERE id = :id", nativeQuery = true)
+    CustomUserResponseDTO findUserByUserId(@Param("id") UUID id);
 
-    @Modifying
-    @Query(value = """
-            UPDATE users
-            SET username = :username,
-                email = :email,
-                password = :password
-            WHERE id = :id
-            """, nativeQuery = true)
-    void updateUser(@Param("id") UUID id,
-                    @Param("username") String username,
-                    @Param("email") String email,
-                    @Param("password") String password);
+    @Query(value = "SELECT * FROM _user WHERE id IN :ids", nativeQuery = true)
+    Set<User> findAllByIdIn(@Param("ids") Set<UUID> ids);
 
-    @EntityGraph( attributePaths = { "roles" } )
-    User findByUsernameOrEmail(String username, String email );
+    @Query(value = "SELECT * FROM _user WHERE username = :username OR email = :email", nativeQuery = true)
+    User findByUsernameOrEmail(@Param("username") String username, @Param("email") String email);
+
 
 }
